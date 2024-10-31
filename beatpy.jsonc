@@ -1,0 +1,5 @@
+    "custom/beat" {
+        "format": "{:%I:%M %p}",
+        "exec": "python3 ~/Coding/beattime/beattimenow.py",
+
+    }
