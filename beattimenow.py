@@ -1,12 +1,9 @@
 from datetime import datetime, timezone, timedelta
-import math 
-import argparse
 import time
-import sys
 
 def current_beattime(diff_from_UTC):
         # UTC +1 
-        #diff_from_UTC = 1
+        
 
         # Present day, Present time
         timeUTC = datetime.now(timezone.utc)
@@ -26,24 +23,13 @@ def current_beattime(diff_from_UTC):
         return f'@{beats:.2f}'
 
 
-#def update_beat_time(diff_from_UTC):
-#    while True:
-#        beat_time = current_beattime(diff_from_UTC)
-#        
-#        # If you're outputting to Waybar, you should print JSON here
-#        print(f'{{"text": "{beat_time}", "tooltip": "Current beat time"}}')
-#        
-#        # Wait for one second before the next update
-#        time.sleep(1)
-
-# Call the function with a 1-hour offset
-#update_beat_time(1)#
+#Output to JSON
 if __name__ == "__main__":
     try:
-        # Accepts timezone difference as a command-line argument
-        diff_from_UTC = int(sys.argv[1]) if len(sys.argv) > 1 else 0
+        # Time Zone 
+        diff_from_UTC = 1
         beat_time = current_beattime(diff_from_UTC)
         print(f'{{"text": "{beat_time}", "tooltip": "Current beat time"}}')
     except Exception as e:
-        # In case of error, output empty JSON to avoid JSON parsing errors in Waybar
+        # In case of error, output empty JSON to avoid JSON errors in Waybar
         print('{"text": "Error", "tooltip": "Script error"}')
